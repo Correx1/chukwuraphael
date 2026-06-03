@@ -1,0 +1,272 @@
+"use client";
+
+import { useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { ExternalLink } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper as SwiperClass } from "swiper";
+import Footer from "@/components/shared/Footer";
+import "swiper/css";
+import "swiper/css/pagination";
+
+interface MediaItem {
+  type: string;
+  url: string;
+}
+
+function ProjectMediaSlider({
+  media,
+  title,
+  priority,
+}: {
+  media: MediaItem[];
+  title: string;
+  priority: boolean;
+}) {
+  const swiperRef = useRef<SwiperClass | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const handleSlideChange = (swiper: SwiperClass) => {
+    const activeIndex = swiper.realIndex;
+    const currentMedia = media[activeIndex];
+
+    // Reset all other videos
+    videoRefs.current.forEach((video, vIdx) => {
+      if (video && vIdx !== activeIndex) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+
+    if (currentMedia.type === "video") {
+      swiper.autoplay.stop();
+      const activeVideo = videoRefs.current[activeIndex];
+      if (activeVideo) {
+        activeVideo.currentTime = 0;
+        activeVideo.play().catch((err) => {
+          console.log("Video playback interrupted or blocked:", err);
+          // If video fails to autoplay, slide to next after a delay
+          setTimeout(() => {
+            swiper.slideNext();
+          }, 6000);
+        });
+      }
+    } else {
+      swiper.autoplay.start();
+    }
+  };
+
+  const handleVideoEnded = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
+
+  return (
+    <Swiper
+      modules={[Autoplay, Pagination]}
+      autoplay={{ delay: 6000, disableOnInteraction: false }}
+      pagination={{ clickable: true }}
+      loop={true}
+      onSwiper={(swiper) => {
+        swiperRef.current = swiper;
+        // Initial slide check
+        if (media[0].type === "video") {
+          swiper.autoplay.stop();
+        }
+      }}
+      onSlideChange={handleSlideChange}
+      className="w-full h-full testimonials-swiper"
+    >
+      {media.map((med, mIdx) => (
+        <SwiperSlide key={mIdx} className="w-full h-full">
+          {med.type === "video" ? (
+            <video
+              ref={(el) => {
+                videoRefs.current[mIdx] = el;
+              }}
+              src={med.url}
+              autoPlay
+              muted
+              playsInline
+              onEnded={handleVideoEnded}
+              className="w-full h-full object-cover rounded-lg"
+            />
+          ) : (
+            <Image
+              src={med.url}
+              alt={`${title} slide`}
+              width={800}
+              height={500}
+              className="w-full h-full object-cover rounded-lg"
+              priority={priority}
+            />
+          )}
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+}
+
+export default function WorkPage() {
+  const projects = [
+    {
+      category: "Web Application",
+      title: "OmniVA Dashboard",
+      summary: "A custom next-generation portal designed for virtual assistant operations, task coordination, and productivity analytics.",
+      bullets: [
+        "Real-time task tracking and workflow coordination charts.",
+        "Secure Google Workspace and Calendar API integrations.",
+        "Interactive metrics tracking with visual performance widgets."
+      ],
+      stack: ["Next.js", "TypeScript", "Tailwind CSS", "API Integration"],
+      link: "#",
+      media: [
+        { type: "image", url: "/bg1.png" },
+        { type: "image", url: "/bg2.png" }
+      ]
+    },
+    {
+      category: "Creative Website",
+      title: "Aether Motion Experience",
+      summary: "A visually striking, highly interactive portfolio and showcase website implementing custom canvas layering and interactive physics.",
+      bullets: [
+        "Lenis smooth scroll architecture for frictionless UX.",
+        "GSAP ScrollTrigger timeline management for complex element morphs.",
+        "Subtle floating ambient backdrop particles and cursor dynamics."
+      ],
+      stack: ["React", "GSAP", "Lenis", "Framer Motion"],
+      link: "#",
+      media: [
+        { type: "video", url: "https://assets.mixkit.co/videos/preview/mixkit-web-development-programming-concept-31911-large.mp4" },
+        { type: "image", url: "/bg3.png" }
+      ]
+    },
+    {
+      category: "SaaS Platform",
+      title: "Zenth Workspace",
+      summary: "A modern collaborative hub featuring drag-and-drop Kanban boards, team file repositories, and role permission levels.",
+      bullets: [
+        "Optimized drag-and-drop task workflow updates.",
+        "Real-time team notification indicators and task assignments.",
+        "Integrated rich text document editing and secure file storage."
+      ],
+      stack: ["Next.js", "React", "TypeScript", "Node.js"],
+      link: "#",
+      media: [
+        { type: "image", url: "/bg2.png" },
+        { type: "image", url: "/bg1.png" }
+      ]
+    },
+    {
+      category: "Enterprise App",
+      title: "School Pilot ERP",
+      summary: "An all-in-one ERP system helping institutions manage student records, grading sheets, accounting logs, and teacher rosters.",
+      bullets: [
+        "Advanced course grading curves and automated GPA calculation.",
+        "Automatic PDF invoicing and transactional SMS notifications.",
+        "Comprehensive administrator controls with granular staff permissions."
+      ],
+      stack: ["React", "Tailwind CSS", "Laravel", "MySQL"],
+      link: "#",
+      media: [
+        { type: "video", url: "https://www.w3schools.com/html/mov_bbb.mp4" },
+        { type: "image", url: "/bg3.png" },
+        { type: "image", url: "/bg1.png" }
+      ]
+    }
+  ];
+
+  return (
+    <main className="min-h-screen flex flex-col justify-between px-6 py-10 md:px-8 md:py-16 text-white relative">
+      {/* Background ambient light flare */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-[100px]" />
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[var(--gold)]/5 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="max-w-5xl mx-auto w-full relative z-10 mt-6 mb-12">
+        {/* Header */}
+        <div className="flex items-center gap-3 mb-4">
+          <span className="block w-6 h-px bg-[var(--gold)]" />
+          <span className="text-[var(--gold)] text-xs font-semibold tracking-widest uppercase">Portfolio</span>
+        </div>
+        <h1 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight text-white mb-6">
+          SELECTED <span className="text-[var(--gold)]">PROJECTS</span>
+        </h1>
+        <p className="text-white/60 font-light max-w-xl mb-16">
+          A selection of recent development projects, applications, and interactive experiences combining design principles with high-performance code.
+        </p>
+
+        {/* Alternating Project Sections */}
+        <div className="space-y-24 md:space-y-32">
+          {projects.map((proj, idx) => {
+            const isEven = idx % 2 === 0;
+            return (
+              <div
+                key={proj.title}
+                className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-10 md:gap-16 items-center`}
+              >
+                {/* Left/Right Column: Swiper Media */}
+                <div className="w-full md:w-[55%] aspect-[4/3] md:aspect-[3/2] max-w-2xl relative z-10 rounded-lg overflow-hidden border border-white/10 bg-white/5 shadow-2xl">
+                  <ProjectMediaSlider
+                    media={proj.media}
+                    title={proj.title}
+                    priority={idx === 0}
+                  />
+                </div>
+
+                {/* Left/Right Column: Text Content */}
+                <div className="w-full md:w-[40%] space-y-4">
+                  <div className="space-y-2">
+                    <span className="text-[var(--gold)] text-[0.65rem] font-bold uppercase tracking-widest block border-b border-[var(--gold)]/20 pb-1 w-fit">
+                      {proj.category}
+                    </span>
+                    <h2 className="font-display font-extrabold text-2xl md:text-3xl text-white tracking-tight">
+                      {proj.title}
+                    </h2>
+                  </div>
+                  
+                  <p className="text-white/70 text-sm font-light leading-relaxed">
+                    {proj.summary}
+                  </p>
+
+                  <ul className="list-disc pl-5 space-y-1.5 text-xs text-white/50 font-light">
+                    {proj.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx}>{bullet}</li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {proj.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[0.65rem] tracking-wider text-white/40 font-mono bg-white/5 px-2.5 py-0.5 rounded border border-white/5"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="pt-4">
+                    <Link
+                      href={proj.link}
+                      className="inline-flex items-center gap-2 text-[var(--gold)] hover:text-[var(--gold-light)] font-semibold text-xs tracking-wider uppercase transition-colors duration-300 group cursor-pointer"
+                    >
+                      <span>View Project</span>
+                      <ExternalLink size={14} className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <Footer />
+    </main>
+  );
+}
