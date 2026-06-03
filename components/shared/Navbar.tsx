@@ -68,11 +68,11 @@ export default function Navbar() {
       <button
         onClick={() => setOpen(true)}
         aria-label="Open menu"
-        className="absolute top-7 right-6 z-[900] w-11 h-11 flex items-center justify-center rounded bg-black/70 border border-[var(--gold)]/25 backdrop-blur-md hover:border-[var(--gold)]/70 transition-colors duration-300 cursor-pointer group"
+        className="absolute top-7 right-6 z-900 w-11 h-11 flex items-center justify-center rounded bg-black/70 border border-(--gold)/25 backdrop-blur-md hover:border-(--gold)/70 transition-colors duration-300 cursor-pointer group"
       >
         <div className="flex flex-col gap-1.5 w-5 items-end">
-          <span className="w-full h-[3px] bg-[var(--gold)] rounded-full transition-all duration-300 group-hover:translate-x-[-2px]" />
-          <span className="w-2/3 h-[3px] bg-[var(--gold)] rounded-full transition-all duration-300 group-hover:w-full" />
+          <span className="w-full h-[3px] bg-(--gold) rounded-full transition-all duration-300 group-hover:translate-x-[-2px]" />
+          <span className="w-2/3 h-[3px] bg-(--gold) rounded-full transition-all duration-300 group-hover:w-full" />
         </div>
       </button>
 
@@ -80,24 +80,26 @@ export default function Navbar() {
       <div
         ref={overlayRef}
         onClick={() => setOpen(false)}
-        className="absolute inset-0 z-[950] bg-black/60 backdrop-blur-sm cursor-pointer opacity-0 pointer-events-none"
+        className="absolute top-0 left-0 right-0 z-950 bg-black/60 backdrop-blur-sm cursor-pointer opacity-0 pointer-events-none"
+        style={{ height: "calc(100vh - 2 * var(--frame, 0px))" }}
       />
 
       {/* Drawer — always in DOM, GSAP controls x */}
       <div
         ref={drawerRef}
-        className="absolute top-0 right-0 bottom-0 z-[1000] w-[min(340px,90vw)] bg-[#0a0a0af5] backdrop-blur-3xl border-l border-white/5 flex flex-col p-10 translate-x-[105%] invisible"
+        className="absolute top-0 right-0 z-1000 w-[min(340px,90vw)] bg-[#0a0a0af5] backdrop-blur-3xl border-l border-white/5 flex flex-col p-10 translate-x-[105%] invisible"
+        style={{ height: "calc(100vh - 2 * var(--frame, 0px))" }}
       >
         {/* Close */}
         <button
           onClick={() => setOpen(false)}
           aria-label="Close menu"
-          className="self-end w-9 h-9 flex items-center justify-center border border-white/10 rounded text-white/50 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors duration-300 mb-6 md:mb-10 cursor-pointer"
+          className="self-end w-9 h-9 flex items-center justify-center border border-white/10 rounded text-white/50 hover:border-(--gold) hover:text-(--gold) transition-colors duration-300 mb-6 md:mb-10 cursor-pointer"
         >
           <X size={16} />
         </button>
 
-        <p className="text-[var(--gold)] text-[0.65rem] tracking-[0.2em] uppercase mb-4 md:mb-8">Menu</p>
+        <p className="text-(--gold) text-[0.65rem] tracking-[0.2em] uppercase mb-4 md:mb-8">Menu</p>
 
         {/* Links */}
         <div ref={linksRef} className="flex flex-col gap-1">
@@ -106,7 +108,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block py-2.5 md:py-4 border-b border-white/5 text-white font-bold tracking-tight hover:text-[var(--gold)] hover:pl-3 transition-all duration-300 text-lg sm:text-xl md:text-2xl font-display"
+              className="block py-2.5 md:py-4 border-b border-white/5 text-white font-bold tracking-tight hover:text-(--gold) hover:pl-3 transition-all duration-300 text-lg sm:text-xl md:text-2xl font-display"
             >
               {link.label}
             </Link>

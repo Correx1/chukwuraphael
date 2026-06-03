@@ -4,10 +4,10 @@
 :root {
   --frame:       0px;
   --black:       #080808;
-  --gold:        #c9a84c;
-  --gold-light:  #e8c96e;
-  --gold-dark:   #a07830;
-  --gold-muted:  rgba(201,168,76,0.15);
+  --gold:        #f59e0b;
+  --gold-light:  #fbbf24;
+  --gold-dark:   #d97706;
+  --gold-muted:  rgba(245,158,11,0.15);
   --white-muted: rgba(255,255,255,0.55);
   --font-display: var(--font-syne), sans-serif;
   --font-body:    var(--font-inter), sans-serif;

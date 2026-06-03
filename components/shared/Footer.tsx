@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="w-full mt-16 flex flex-col items-center relative z-10">
       {/* Main Call to Action Block */}
-      <div className="w-full bg-white/[0.02] border-t border-white/5 py-16 px-6 flex flex-col items-center justify-center text-center">
+      <div className="w-full bg-white/2 border-t border-white/5 py-16 px-6 flex flex-col items-center justify-center text-center">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-normal text-white mb-8 tracking-tight font-display">
           Let&apos;s make something great!
         </h2>

@@ -47,17 +47,17 @@ export default function ServicesPage() {
     <main className="min-h-screen flex flex-col justify-between px-6 py-10 md:px-8 md:py-16 text-white relative">
       {/* Background ambient grids */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-size-[40px_40px]" />
       </div>
 
       <div className="max-w-5xl mx-auto w-full relative z-10 mt-6 mb-12">
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="block w-6 h-px bg-[var(--gold)]" />
-          <span className="text-[var(--gold)] text-xs font-semibold tracking-widest uppercase">Offerings</span>
+          <span className="block w-6 h-px bg-(--gold)" />
+          <span className="text-(--gold) text-xs font-semibold tracking-widest uppercase">Offerings</span>
         </div>
         <h1 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight text-white mb-10">
-          MY <span className="text-[var(--gold)]">SERVICES</span>
+          MY <span className="text-(--gold)">SERVICES</span>
         </h1>
         <p className="text-white/60 font-light max-w-xl mb-16">
           Tailored digital solutions blending modern development, creative design, and administrative expertise to elevate your workflow and brand.
@@ -65,18 +65,18 @@ export default function ServicesPage() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
-          {services.map((svc, i) => {
+          {services.map((svc) => {
             const Icon = svc.icon;
             return (
               <div
                 key={svc.title}
-                className="bg-white/[0.02] border border-white/5 rounded-lg p-6 sm:p-8 flex flex-col justify-between backdrop-blur-md hover:border-[var(--gold)]/20 hover:bg-white/[0.04] transition-all duration-300 group"
+                className="bg-white/2 border border-white/5 rounded-lg p-6 sm:p-8 flex flex-col justify-between backdrop-blur-md hover:border-(--gold)/20 hover:bg-white/4 transition-all duration-300 group"
               >
                 <div>
-                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-[var(--gold)]/10 border border-[var(--gold)]/25 text-[var(--gold)] mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-(--gold)/10 border border-(--gold)/25 text-(--gold) mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Icon size={22} />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-4 group-hover:text-[var(--gold)] transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-white mb-4 group-hover:text-(--gold) transition-colors duration-300">
                     {svc.title}
                   </h3>
                   <p className="text-white/60 text-xs font-light leading-relaxed mb-6">
@@ -86,7 +86,7 @@ export default function ServicesPage() {
                 <ul className="space-y-2 border-t border-white/5 pt-6">
                   {svc.features.map((feat) => (
                     <li key={feat} className="text-[10px] text-white/50 flex items-center gap-2">
-                      <span className="w-1 h-1 bg-[var(--gold)] rounded-full" />
+                      <span className="w-1 h-1 bg-(--gold) rounded-full" />
                       {feat}
                     </li>
                   ))}

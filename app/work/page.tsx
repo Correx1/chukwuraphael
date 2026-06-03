@@ -115,13 +115,13 @@ export default function WorkPage() {
     {
       category: "Web Application",
       title: "OmniVA Dashboard",
-      summary: "A custom next-generation portal designed for virtual assistant operations, task coordination, and productivity analytics.",
+      summary: " A mobile-responsive e-commerce platform with payments, Headless CMS, real time AI powered admin dashboard, sales and inventory management, rental and sales features, Offline POS features, and automated email notifications.",
       bullets: [
         "Real-time task tracking and workflow coordination charts.",
         "Secure Google Workspace and Calendar API integrations.",
         "Interactive metrics tracking with visual performance widgets."
       ],
-      stack: ["Next.js", "TypeScript", "Tailwind CSS", "API Integration"],
+      stack: ["Next.js", "App Script", "Sanity CMS", "Payment Integration"],
       link: "#",
       media: [
         { type: "image", url: "/bg1.png" },
@@ -130,7 +130,7 @@ export default function WorkPage() {
     },
     {
       category: "Creative Website",
-      title: "Aether Motion Experience",
+      title: "Aether Motion Experience", 
       summary: "A visually striking, highly interactive portfolio and showcase website implementing custom canvas layering and interactive physics.",
       bullets: [
         "Lenis smooth scroll architecture for frictionless UX.",
@@ -183,18 +183,18 @@ export default function WorkPage() {
     <main className="min-h-screen flex flex-col justify-between px-6 py-10 md:px-8 md:py-16 text-white relative">
       {/* Background ambient light flare */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[var(--gold)]/5 rounded-full blur-[100px]" />
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-(--gold)/10 rounded-full blur-[100px]" />
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-(--gold)/5 rounded-full blur-[100px]" />
       </div>
 
       <div className="max-w-5xl mx-auto w-full relative z-10 mt-6 mb-12">
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="block w-6 h-px bg-[var(--gold)]" />
-          <span className="text-[var(--gold)] text-xs font-semibold tracking-widest uppercase">Portfolio</span>
+          <span className="block w-6 h-px bg-(--gold)" />
+          <span className="text-(--gold) text-xs font-semibold tracking-widest uppercase">Portfolio</span>
         </div>
         <h1 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight text-white mb-6">
-          SELECTED <span className="text-[var(--gold)]">PROJECTS</span>
+          SELECTED <span className="text-(--gold)">PROJECTS</span>
         </h1>
         <p className="text-white/60 font-light max-w-xl mb-16">
           A selection of recent development projects, applications, and interactive experiences combining design principles with high-performance code.
@@ -210,7 +210,7 @@ export default function WorkPage() {
                 className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-10 md:gap-16 items-center`}
               >
                 {/* Left/Right Column: Swiper Media */}
-                <div className="w-full md:w-[55%] aspect-[4/3] md:aspect-[3/2] max-w-2xl relative z-10 rounded-lg overflow-hidden border border-white/10 bg-white/5 shadow-2xl">
+                <div className="w-full md:w-[55%] aspect-4/3 md:aspect-3/2 max-w-2xl relative z-10 rounded-lg overflow-hidden border border-white/10 bg-white/5 shadow-2xl">
                   <ProjectMediaSlider
                     media={proj.media}
                     title={proj.title}
@@ -221,7 +221,7 @@ export default function WorkPage() {
                 {/* Left/Right Column: Text Content */}
                 <div className="w-full md:w-[40%] space-y-4">
                   <div className="space-y-2">
-                    <span className="text-[var(--gold)] text-[0.65rem] font-bold uppercase tracking-widest block border-b border-[var(--gold)]/20 pb-1 w-fit">
+                    <span className="text-(--gold) text-[0.65rem] font-bold uppercase tracking-widest block border-b border-(--gold)/20 pb-1 w-fit">
                       {proj.category}
                     </span>
                     <h2 className="font-display font-extrabold text-2xl md:text-3xl text-white tracking-tight">
@@ -253,7 +253,7 @@ export default function WorkPage() {
                   <div className="pt-4">
                     <Link
                       href={proj.link}
-                      className="inline-flex items-center gap-2 text-[var(--gold)] hover:text-[var(--gold-light)] font-semibold text-xs tracking-wider uppercase transition-colors duration-300 group cursor-pointer"
+                      className="inline-flex items-center gap-2 text-(--gold) hover:text-(--gold-light) font-semibold text-xs tracking-wider uppercase transition-colors duration-300 group cursor-pointer"
                     >
                       <span>View Project</span>
                       <ExternalLink size={14} className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />

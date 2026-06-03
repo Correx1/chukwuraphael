@@ -7,7 +7,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import { TypeAnimation } from "react-type-animation";
 import { gsap } from "gsap";
 import Link from "next/link";
-import { User, Briefcase, Layers, ChevronDown } from "lucide-react";
+import { User, Briefcase, Layers } from "lucide-react";
 import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa6";
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -122,17 +122,17 @@ export default function Hero() {
       </div>
 
       {/* Overlays */}
-      <div className="hero-overlay absolute inset-0 z-[1]" />
-      <div className="hero-vignette absolute inset-0 z-[1]" />
-      <div className="absolute inset-0 bg-black/60 z-[1]" />
+      <div className="hero-overlay absolute inset-0 z-1" />
+      <div className="hero-vignette absolute inset-0 z-1" />
+      <div className="absolute inset-0 bg-black/60 z-1" />
 
       {/* Floating shapes */}
-      <div ref={shapesRef} className="absolute inset-0 z-[2] pointer-events-none">
+      <div ref={shapesRef} className="absolute inset-0 z-2 pointer-events-none">
         {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} className={`shape shape-${i} absolute border border-[var(--gold)] ${shapeRounded[i]}`} />
+          <div key={i} className={`shape shape-${i} absolute border border-(--gold) ${shapeRounded[i]}`} />
         ))}
         {[0, 1, 2, 3, 4].map((i) => (
-          <div key={i} className={`shape dot-${i} absolute w-1 h-1 rounded-full bg-[var(--gold)] opacity-45`} />
+          <div key={i} className={`shape dot-${i} absolute w-1 h-1 rounded-full bg-(--gold) opacity-45`} />
         ))}
       </div>
 
@@ -140,11 +140,11 @@ export default function Hero() {
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-8 py-16 sm:px-16 sm:py-24 md:px-24">
         {/* Greeting label */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="block w-8 h-px bg-[var(--gold)]" />
-          <span className="text-[var(--gold)] font-medium tracking-[0.2em] uppercase" style={{ fontSize: "clamp(0.75rem, 2vw, 1rem)" }}>
-            {greeting} <span className="emoji-wave inline-block">👋</span>
+          <span className="block w-8 h-px bg-(--gold)" />
+          <span className="text-(--gold) font-medium tracking-[0.2em] uppercase" style={{ fontSize: "clamp(0.75rem, 2vw, 1rem)" }}>
+           Hi, {greeting} <span className="emoji-wave inline-block">👋</span>
           </span>
-          <span className="block w-8 h-px bg-[var(--gold)]" />
+          <span className="block w-8 h-px bg-(--gold)" />
         </div>
 
         {/* I'M line */}
@@ -153,7 +153,7 @@ export default function Hero() {
         </p>
 
         {/* Name */}
-        <div ref={headlineRef} className="mb-4 sm:mb-6 [perspective:600px]">
+        <div ref={headlineRef} className="mb-4 sm:mb-6 perspective-[600px]">
           <h1 className="hero-title text-white font-extrabold whitespace-nowrap">{nameChars}</h1>
         </div>
 
@@ -162,18 +162,16 @@ export default function Hero() {
           {mounted && (
             <TypeAnimation
               sequence={[
-                "Frontend Developer",
-                2000,
-                "Virtual Assistant",
-                2000,
-                "Creative Technologist",
-                2000,
-                "UI/UX Enthusiast",
-                2000,
+                "I build beautiful and efficient websites",
+                3000,
+                "I help businesses streamline their operations",
+                3000,
+                "I provide technical support",
+                3000,
               ]}
               wrapper="p"
               className="typewriter"
-              speed={50}
+              speed={40}
               deletionSpeed={65}
               repeat={Infinity}
             />
@@ -187,7 +185,7 @@ export default function Hero() {
             className="btn-gold flex items-center gap-2 px-8 py-3 text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer"
           >
             <User size={14} />
-            About Me
+           <span>About Me</span>
           </Link>
           <div className="flex gap-4 justify-center">
             <Link
@@ -210,36 +208,36 @@ export default function Hero() {
         {/* Social Icons Row */}
         <div className="flex gap-6 mt-8 items-center justify-center">
           <Link
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/chukwu-raphael-8893a6249"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="text-white/40 hover:text-[var(--gold)] transition-colors duration-300 cursor-pointer"
+            className="text-white/40 hover:text-(--gold) transition-colors duration-300 cursor-pointer"
           >
             <FaLinkedin size={20} />
           </Link>
           <Link
-            href="https://github.com"
+            href="https://github.com/Correx1"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="text-white/40 hover:text-[var(--gold)] transition-colors duration-300 cursor-pointer"
+            className="text-white/40 hover:text-(--gold) transition-colors duration-300 cursor-pointer"
           >
             <FaGithub size={20} />
           </Link>
           <Link
-            href="https://wa.me/"
+            href="https://wa.link/n7yp6l"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
-            className="text-white/40 hover:text-[var(--gold)] transition-colors duration-300 cursor-pointer"
+            className="text-white/40 hover:text-(--gold) transition-colors duration-300 cursor-pointer"
           >
             <FaWhatsapp size={20} />
           </Link>
           <Link
             href="/contact"
             aria-label="Contact Page"
-            className="text-white/40 hover:text-[var(--gold)] transition-colors duration-300 cursor-pointer"
+            className="text-white/40 hover:text-(--gold) transition-colors duration-300 cursor-pointer"
           >
             <FaEnvelope size={20} />
           </Link>
