@@ -43,7 +43,9 @@ export default function RootLayout({
             <Navbar />
             {/* Film grain overlay */}
             <div className="noise-overlay" aria-hidden="true" />
-            {children}
+            <div id="scroll-wrapper" className="scroll-wrapper">
+              {children}
+            </div>
           </div>
         </LenisProvider>
       </body>

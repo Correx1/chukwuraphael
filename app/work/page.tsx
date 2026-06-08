@@ -113,32 +113,37 @@ function ProjectMediaSlider({
 export default function WorkPage() {
   const projects = [
     {
-      category: "Web Application",
-      title: "OmniVA Dashboard",
+      category: "E-commerce Web Application",
+      title: "Clautechzs",
       summary: " A mobile-responsive e-commerce platform with payments, Headless CMS, real time AI powered admin dashboard, sales and inventory management, rental and sales features, Offline POS features, and automated email notifications.",
       bullets: [
-        "Real-time task tracking and workflow coordination charts.",
-        "Secure Google Workspace and Calendar API integrations.",
-        "Interactive metrics tracking with visual performance widgets."
+        "Payment gateways integration.",
+        "Real-time AI-powered admin dashboard for sales analytics and inventory tracking.",
+        "Offline POS mode with automatic data sync on reconnection.",
+        "Dual-mode rental & sales flow with Sanity CMS for dynamic product management.",
+        "Automated transactional email notifications for orders",
       ],
       stack: ["Next.js", "App Script", "Sanity CMS", "Payment Integration"],
-      link: "#",
+      link: "https://clautechzs.com",
       media: [
-        { type: "image", url: "/bg1.png" },
-        { type: "image", url: "/bg2.png" }
+        { type: "image", url: "/portfolio/ecom1.png" },
+        { type: "image", url: "/portfolio/ecom2.png" },
+       
       ]
     },
     {
-      category: "Creative Website",
-      title: "Aether Motion Experience", 
-      summary: "A visually striking, highly interactive portfolio and showcase website implementing custom canvas layering and interactive physics.",
-      bullets: [
-        "Lenis smooth scroll architecture for frictionless UX.",
-        "GSAP ScrollTrigger timeline management for complex element morphs.",
-        "Subtle floating ambient backdrop particles and cursor dynamics."
-      ],
-      stack: ["React", "GSAP", "Lenis", "Framer Motion"],
-      link: "#",
+     category: "Client Portal & Project Management Platform",
+title: "Noplin CMS",
+summary: "An all-in-one collaborative CRM that allows agencies to manage client projects, assign tasks to team, track team tasks,  AI to auto-generate project task breakdowns, overview and summary send real-time notifications, and securely handle chat messaging and billing.",
+bullets: [
+  "Dedicated client dashboard that lets clients view project progress, messages, and invoices in one secure place.",
+  "AI-powered assistant that auto-generates task breakdowns, structures deliverables, and refines project overviews.",
+  "Comprehensive leads management to capture contact form inquiries, promote submissions to active leads, and track deals.",
+  "Flexible billing engine with six different professional invoice templates that dynamically structure financial statements.",
+  "Visual drag-and-drop Kanban boards and detailed project trackers to coordinate team workflows."
+],
+stack: ["Next.js", "Supabase", "AI SDK", "Tailwind CSS"],
+link: "https://noplin.com",
       media: [
         { type: "video", url: "https://assets.mixkit.co/videos/preview/mixkit-web-development-programming-concept-31911-large.mp4" },
         { type: "image", url: "/bg3.png" }

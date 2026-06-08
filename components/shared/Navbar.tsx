@@ -64,11 +64,12 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Trigger — absolute inside container */}
+      {/* Trigger — fixed to viewport */}
       <button
         onClick={() => setOpen(true)}
         aria-label="Open menu"
-        className="absolute top-7 right-6 z-900 w-11 h-11 flex items-center justify-center rounded bg-black/70 border border-(--gold)/25 backdrop-blur-md hover:border-(--gold)/70 transition-colors duration-300 cursor-pointer group"
+        className="fixed z-900 w-11 h-11 flex items-center justify-center rounded bg-black/80 border border-(--gold)/25 backdrop-blur-md hover:border-(--gold)/70 transition-colors duration-300 cursor-pointer group"
+        style={{ top: "calc(var(--frame, 0px) + 1.75rem)", right: "calc(var(--frame, 0px) + 1.5rem)" }}
       >
         <div className="flex flex-col gap-1.5 w-5 items-end">
           <span className="w-full h-[3px] bg-(--gold) rounded-full transition-all duration-300 group-hover:translate-x-[-2px]" />
@@ -80,15 +81,24 @@ export default function Navbar() {
       <div
         ref={overlayRef}
         onClick={() => setOpen(false)}
-        className="absolute top-0 left-0 right-0 z-950 bg-black/60 backdrop-blur-sm cursor-pointer opacity-0 pointer-events-none"
-        style={{ height: "calc(100vh - 2 * var(--frame, 0px))" }}
+        className="fixed z-950 bg-black/50 backdrop-blur-sm cursor-pointer opacity-0 pointer-events-none"
+        style={{
+          top: "var(--frame, 0px)",
+          left: "var(--frame, 0px)",
+          right: "var(--frame, 0px)",
+          height: "calc(100vh - 2 * var(--frame, 0px))",
+        }}
       />
 
       {/* Drawer — always in DOM, GSAP controls x */}
       <div
         ref={drawerRef}
-        className="absolute top-0 right-0 z-1000 w-[min(340px,90vw)] bg-[#0a0a0af5] backdrop-blur-3xl border-l border-white/5 flex flex-col p-10 translate-x-[105%] invisible"
-        style={{ height: "calc(100vh - 2 * var(--frame, 0px))" }}
+        className="fixed z-1000 w-[min(340px,90vw)] bg-[#0a0a0af5] backdrop-blur-3xl border-l border-white/5 flex flex-col p-10 translate-x-[105%] invisible"
+        style={{
+          top: "var(--frame, 0px)",
+          right: "var(--frame, 0px)",
+          height: "calc(100vh - 2 * var(--frame, 0px))",
+        }}
       >
         {/* Close */}
         <button
