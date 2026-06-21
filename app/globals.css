@@ -61,10 +61,6 @@ html.lenis, html.lenis body { height: auto; }
 ::selection { background: var(--gold-muted); color: var(--gold-light); }
 
 /* ── Keyframes ── */
-@keyframes float {
-  0%,100% { transform: translateY(0) rotate(var(--r,0deg)); }
-  50%      { transform: translateY(-16px) rotate(var(--r,0deg)); }
-}
 @keyframes kenBurns {
   from { transform: scale(1); }
   to   { transform: scale(1.07); }
@@ -132,26 +128,10 @@ html.lenis, html.lenis body { height: auto; }
 /* char span */
 .char { transform-origin: bottom center; }
 
-/* Floating shapes */
-.shape-0 { width:160px;height:160px;top:12%;left:7%;  opacity:.030;transform:rotate(15deg); animation:float 7s  ease-in-out 0s   infinite; }
-.shape-1 { width:70px; height:70px; top:68%;left:4%;  opacity:.042;transform:rotate(-20deg);animation:float 9s  ease-in-out 1.5s infinite; }
-.shape-2 { width:110px;height:110px;top:20%;right:5%; opacity:.054;transform:rotate(30deg); animation:float 8s  ease-in-out .8s  infinite; }
-.shape-3 { width:55px; height:55px; top:62%;right:9%; opacity:.030;transform:rotate(-10deg);animation:float 6s  ease-in-out 2s   infinite; }
-.shape-4 { width:200px;height:200px;top:40%;left:48%; opacity:.042;transform:rotate(45deg); animation:float 11s ease-in-out .3s  infinite; }
-.shape-5 { width:45px; height:45px; top:78%;left:28%; opacity:.054;transform:rotate(25deg); animation:float 7s  ease-in-out 1.2s infinite; }
-.shape-6 { width:80px; height:80px; top:8%; left:38%; opacity:.030;transform:rotate(-35deg);animation:float 9s  ease-in-out .6s  infinite; }
 
-/* Floating dots */
-.dot-0 { top:20%;left:8%;  animation:float 5s ease-in-out 0s   infinite; }
-.dot-1 { top:34%;left:25%; animation:float 6s ease-in-out .4s  infinite; }
-.dot-2 { top:48%;left:42%; animation:float 7s ease-in-out .8s  infinite; }
-.dot-3 { top:62%;left:59%; animation:float 8s ease-in-out 1.2s infinite; }
-.dot-4 { top:76%;left:76%; animation:float 9s ease-in-out 1.6s infinite; }
 
 /* Photo slides */
 .slide-photo-1 { background-image:url('/dp1.png'); }
-.slide-photo-2 { background-image:url('/dp1.png'); }
-.slide-photo-3 { background-image:url('/dp1.png'); }
 
 /* Gradient fallback slides */
 .slide-grad-1 { background:linear-gradient(135deg,#1a0f00 0%,#0a0a0a 60%,#0f0800 100%); }

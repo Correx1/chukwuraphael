@@ -234,7 +234,7 @@ export default function WorkPage() {
                 </div>
 
                 {/* Left/Right Column: Text Content (48% width inside card) */}
-                <div className="w-full md:w-[50%] space-y-4 p-4">
+                <div className="w-full md:w-[50%] space-y-4 ">
                   <div>
                     {/* Underlined Category */}
                     <span className="text-(--gold) text-xs font-bold uppercase tracking-[0.2em] block w-fit pb-1.5 ">

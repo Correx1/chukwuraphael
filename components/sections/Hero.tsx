@@ -1,7 +1,7 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { TypeAnimation } from "react-type-animation";
@@ -12,27 +12,14 @@ import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa6";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-const shapeRounded = ["rounded-full", "rounded-none", "rounded-[30%]", "rounded-full", "rounded-none", "rounded-[30%]", "rounded-full"];
-
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
-  const shapesRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
-  const [hasPhotos, setHasPhotos] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => setHasPhotos(true);
-    img.onerror = () => setHasPhotos(false);
-    img.src = "/dp2.png";
-  }, []);
 
   useEffect(() => {
     if (!mounted) return;
@@ -48,19 +35,6 @@ export default function Hero() {
       }
       tl.fromTo(subtitleRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, "-=0.3");
       tl.fromTo(buttonsRef.current, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, "-=0.3");
-
-      shapesRef.current?.querySelectorAll<HTMLElement>(".shape").forEach((el, i) => {
-        gsap.to(el, {
-          y: () => window.scrollY * (i % 2 === 0 ? -0.18 : -0.28),
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      });
     }, containerRef);
     return () => ctx.revert();
   }, [mounted]);
@@ -69,61 +43,55 @@ export default function Hero() {
     <div ref={containerRef} className="hero-h w-full relative overflow-hidden">
       {/* Slideshow BG */}
       <div className="absolute inset-0 z-0">
-        {hasPhotos ? (
-          <Swiper
-            modules={[Autoplay, EffectFade]}
-            effect="fade"
-            autoplay={{ delay: 4500 }}
-            loop
-            speed={1800}
-            className="w-full h-full"
-          >
-            <SwiperSlide>
-              <div className="slide-bg slide-photo-1 w-full h-full" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="slide-bg slide-photo-2 w-full h-full" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="slide-bg slide-photo-3 w-full h-full" />
-            </SwiperSlide>
-          </Swiper>
-        ) : (
-          <Swiper
-            modules={[Autoplay, EffectFade]}
-            effect="fade"
-            autoplay={{ delay: 4000 }}
-            loop
-            speed={2000}
-            className="w-full h-full"
-          >
-            <SwiperSlide>
-              <div className="slide-bg slide-grad-1 w-full h-full" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="slide-bg slide-grad-2 w-full h-full" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="slide-bg slide-grad-3 w-full h-full" />
-            </SwiperSlide>
-          </Swiper>
-        )}
+        <Swiper
+          modules={[Autoplay, EffectFade]}
+          effect="fade"
+          autoplay={{ delay: 4500, disableOnInteraction: false }}
+          loop
+          speed={1800}
+          className="w-full h-full"
+        >
+          <SwiperSlide>
+            <div className="relative w-full h-full">
+              <Image
+                src="/dp1.png"
+                alt="Background slide 1"
+                fill
+                priority
+                className="object-cover object-center slide-bg"
+                sizes="100vw"
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-full h-full">
+              <Image
+                src="/dp2.png"
+                alt="Background slide 2"
+                fill
+                className="object-cover object-center slide-bg"
+                sizes="100vw"
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-full h-full">
+              <Image
+                src="/dp3.png"
+                alt="Background slide 3"
+                fill
+                className="object-cover object-center slide-bg"
+                sizes="100vw"
+              />
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
 
       {/* Overlays */}
       <div className="hero-overlay absolute inset-0 z-1" />
       <div className="hero-vignette absolute inset-0 z-1" />
       <div className="absolute inset-0 bg-black/60 z-1" />
-
-      {/* Floating shapes */}
-      <div ref={shapesRef} className="absolute inset-0 z-2 pointer-events-none">
-        {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} className={`shape shape-${i} absolute border border-(--gold) ${shapeRounded[i]}`} />
-        ))}
-        {[0, 1, 2, 3, 4].map((i) => (
-          <div key={i} className={`shape dot-${i} absolute w-1 h-1 rounded-full bg-(--gold) opacity-45`} />
-        ))}
-      </div>
 
       {/* Content */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-8 py-16 sm:px-16 sm:py-24 md:px-24 translate-y-10 sm:translate-y-16">
@@ -187,7 +155,7 @@ export default function Hero() {
               className="btn-outline flex items-center gap-2 px-7 py-3 text-sm font-medium transition-colors duration-300 cursor-pointer"
             >
               <User size={14} />
-             About Me
+             About 
             </Link>
           </div>
         </div>
