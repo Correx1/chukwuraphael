@@ -97,7 +97,7 @@ html.lenis, html.lenis body { height: auto; }
 .hero-overlay    { background: linear-gradient(to bottom,rgba(8,8,8,.5) 0%,rgba(8,8,8,.25) 40%,rgba(8,8,8,.65) 80%,rgba(8,8,8,.95) 100%); }
 .hero-vignette   { background: radial-gradient(ellipse at center,transparent 35%,rgba(8,8,8,.6) 100%); }
 .hero-title      { font-size: clamp(2.2rem, 6.5vw, 9rem); font-family: var(--font-display); letter-spacing:-0.03em; line-height:1; }
-.typewriter      { font-family: var(--font-body); font-size: clamp(1rem,2.5vw,1.5rem); color: var(--gold); letter-spacing: 0.1em; }
+.typewriter      { font-family: var(--font-display); font-size: clamp(1rem,2.5vw,1.5rem); color: var(--gold); letter-spacing: 0.1em; }
 .nav-link-text   { font-family: var(--font-display); font-size: clamp(1.5rem,4vw,2rem); }
 .font-display    { font-family: var(--font-display); }
 .slide-bg        { animation: kenBurns 7s ease-in-out infinite alternate; background-size: cover; background-position: center; }
@@ -149,9 +149,9 @@ html.lenis, html.lenis body { height: auto; }
 .dot-4 { top:76%;left:76%; animation:float 9s ease-in-out 1.6s infinite; }
 
 /* Photo slides */
-.slide-photo-1 { background-image:url('/bg1.png'); }
-.slide-photo-2 { background-image:url('/bg2.png'); }
-.slide-photo-3 { background-image:url('/bg3.png'); }
+.slide-photo-1 { background-image:url('/dp1.png'); }
+.slide-photo-2 { background-image:url('/dp1.png'); }
+.slide-photo-3 { background-image:url('/dp1.png'); }
 
 /* Gradient fallback slides */
 .slide-grad-1 { background:linear-gradient(135deg,#1a0f00 0%,#0a0a0a 60%,#0f0800 100%); }

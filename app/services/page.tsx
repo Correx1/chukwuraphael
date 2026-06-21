@@ -1,45 +1,37 @@
 "use client";
 
-import { Monitor, Server, Sparkles, CheckSquare, Zap, Users } from "lucide-react";
+import { Monitor, CheckSquare, Check } from "lucide-react";
 import Footer from "@/components/shared/Footer";
 
 export default function ServicesPage() {
   const services = [
     {
       icon: Monitor,
-      title: "Website Development",
-      description: "Building modern, high-performance web applications using React, Next.js, and TypeScript, optimized for fast loading and SEO.",
-      features: ["Next.js & React SPA/SSR", "Mobile-First Responsive Layouts", "SEO & Performance Audits"]
-    },
-    {
-      icon: Server,
-      title: "Laravel App Development",
-      description: "Developing secure, robust, and scalable backend services and MVC web applications using Laravel, MySQL, and RESTful APIs.",
-      features: ["Laravel API & MVC Architecture", "Database Schema Optimization", "Secure Admin Portals"]
-    },
-    {
-      icon: Sparkles,
-      title: "Creative Motion & Design",
-      description: "Crafting immersive user interfaces with sophisticated animations, interactive page transitions, and smooth scrolling experiences using GSAP and Framer Motion.",
-      features: ["GSAP ScrollTrigger Scroll Effects", "Lenis & Smooth Scrolling", "Micro-interactions & SVG Animates"]
+      title: "Website & Web App Development",
+      description: "I build fast, secure, and modern websites that turn visitors into customers. Instead of just writing code, I focus on creating digital experiences that load instantly, work perfectly on all devices, and rank well on search engines. I handle the technical details—from checkouts to custom admin portals—so you can focus on running your business.",
+      features: [
+        "Responsive UI design across all devices",
+        "SEO optimization (on-page SEO and performance)",
+        "CMS integration (headless CMS and admin dashboards)",
+        "Core Web Vitals & speed optimization",
+        "Secure payment gateway integrations",
+        "Reliable deployment & hosting setups",
+        "Ongoing website maintenance & scaling"
+      ]
     },
     {
       icon: CheckSquare,
-      title: "Technical Virtual Assistance",
-      description: "Providing premium technical and administrative support, managing calendars, organizing documents, and coordinating team operations behind the scenes.",
-      features: ["Calendar & Inbox Organization", "Document & Data Structuring", "Project Management System Setup"]
-    },
-    {
-      icon: Zap,
-      title: "Workflow Automation",
-      description: "Integrating cloud tools and APIs to automate repetitive business processes, linking Slack, Gmail, and CRM platforms using Zapier or Make.",
-      features: ["Zapier & Make Integrations", "Database Sync & Lead Automations", "Custom Scripting & Webhooks"]
-    },
-    {
-      icon: Users,
-      title: "Project Coordination",
-      description: "Managing project boards, organizing Kanban boards, scheduling sprints, tracking deliverables, and facilitating seamless team alignment.",
-      features: ["Trello, Notion & Asana Setup", "Sprint Deliverables Tracking", "Team Scheduling & Check-ins"]
+      title: "Virtual Assistant (Tech & Operations Focus)",
+      description: "I provide reliable remote support by helping individuals and teams stay organized, meet deadlines, and handle daily digital tasks efficiently. I support operations through structured task execution, documentation, reporting, and online coordination so your business runs smoothly behind the scenes.",
+      features: [
+        "CRM setup and systems management",
+        "Email inbox and document handling",
+        "Accurate data entry and record keeping",
+        "Consistent task execution and follow-up",
+        "Calendar management and scheduling support",
+        "Basic website, platform, and content updates",
+        "Online research and information gathering"
+      ]
     }
   ];
 
@@ -50,47 +42,54 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-size-[40px_40px]" />
       </div>
 
-      <div className="max-w-5xl mx-auto w-full relative z-10 mt-6 mb-12">
+      <div className="max-w-5xl mx-auto w-full relative z-10 mt-6 mb-1">
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
           <span className="block w-6 h-px bg-(--gold)" />
           <span className="text-(--gold) text-xs font-semibold tracking-widest uppercase">Offerings</span>
         </div>
-        <h1 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight text-white mb-10">
+        <h1 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight text-white mb-16">
           MY <span className="text-(--gold)">SERVICES</span>
         </h1>
-        <p className="text-white/60 font-light max-w-xl mb-16">
-          Tailored digital solutions blending modern development, creative design, and administrative expertise to elevate your workflow and brand.
-        </p>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+        {/* Services Layout */}
+        <div className="space-y-12 md:space-y-16 mb-5">
           {services.map((svc) => {
             const Icon = svc.icon;
             return (
               <div
                 key={svc.title}
-                className="bg-white/2 border border-white/5 rounded-lg p-6 sm:p-8 flex flex-col justify-between backdrop-blur-md hover:border-(--gold)/20 hover:bg-white/4 transition-all duration-300 group"
+                className="flex flex-col md:flex-row items-start gap-10 md:gap-16 lg:gap-20 py-4"
               >
-                <div>
-                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-(--gold)/10 border border-(--gold)/25 text-(--gold) mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Icon size={22} />
+                {/* Info Column */}
+                <div className="w-full md:w-[45%] space-y-5">
+                  <div className="w-14 h-14 flex items-center justify-center rounded-lg bg-(--gold)/10 border border-(--gold)/25 text-(--gold) group-hover:scale-110 transition-transform duration-300">
+                    <Icon size={26} />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-4 group-hover:text-(--gold) transition-colors duration-300">
+                  <h2 className="font-extrabold text-2xl md:text-3xl text-white tracking-tight">
                     {svc.title}
-                  </h3>
-                  <p className="text-white/60 text-xs font-light leading-relaxed mb-6">
+                  </h2>
+                  <p className="text-white/60 text-sm md:text-base font-light leading-relaxed pr-0 md:pr-4">
                     {svc.description}
                   </p>
                 </div>
-                <ul className="space-y-2 border-t border-white/5 pt-6">
-                  {svc.features.map((feat) => (
-                    <li key={feat} className="text-[10px] text-white/50 flex items-center gap-2">
-                      <span className="w-1 h-1 bg-(--gold) rounded-full" />
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
+
+                {/* Features Checklist Column */}
+                <div className="w-full md:w-[50%]">
+                  <ul className="grid grid-cols-1 gap-3">
+                    {svc.features.map((feat) => (
+                      <li
+                        key={feat}
+                        className="flex items-start gap-3.5 text-xs md:text-sm text-white/75 font-light bg-white/2 border border-white/5 rounded-lg p-4 hover:border-(--gold)/20 hover:bg-white/4 transition-all duration-300"
+                      >
+                        <div className="w-5 h-5 flex items-center justify-center rounded-full bg-(--gold)/10 border border-(--gold)/20 text-(--gold) mt-0.5 shrink-0">
+                          <Check size={11} />
+                        </div>
+                        <span className="leading-tight">{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             );
           })}

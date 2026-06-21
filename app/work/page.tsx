@@ -81,7 +81,7 @@ function ProjectMediaSlider({
       className="w-full h-full testimonials-swiper"
     >
       {media.map((med, mIdx) => (
-        <SwiperSlide key={mIdx} className="w-full h-full">
+        <SwiperSlide key={mIdx} className="w-full h-full relative overflow-hidden bg-black/20">
           {med.type === "video" ? (
             <video
               ref={(el) => {
@@ -95,14 +95,16 @@ function ProjectMediaSlider({
               className="w-full h-full object-cover rounded-lg"
             />
           ) : (
-            <Image
-              src={med.url}
-              alt={`${title} slide`}
-              width={800}
-              height={500}
-              className="w-full h-full object-cover rounded-lg"
-              priority={priority}
-            />
+            <div className="relative w-full h-full">
+              <Image
+                src={med.url}
+                alt={`${title} slide`}
+                fill
+                className="object-cover object-top rounded-lg"
+                priority={priority}
+                sizes="(max-width: 768px) 100vw, 800px"
+              />
+            </div>
           )}
         </SwiperSlide>
       ))}
@@ -128,6 +130,8 @@ export default function WorkPage() {
       media: [
         { type: "image", url: "/portfolio/ecom1.png" },
         { type: "image", url: "/portfolio/ecom2.png" },
+        { type: "image", url: "/portfolio/ecom3.png" },
+        { type: "image", url: "/portfolio/ecom4.png" },
        
       ]
     },
@@ -137,34 +141,44 @@ title: "Noplin CMS",
 summary: "An all-in-one collaborative CRM that allows agencies to manage client projects, assign tasks to team, track team tasks,  AI to auto-generate project task breakdowns, overview and summary send real-time notifications, and securely handle chat messaging and billing.",
 bullets: [
   "Dedicated client dashboard that lets clients view project progress, messages, and invoices in one secure place.",
-  "AI-powered assistant that auto-generates task breakdowns, structures deliverables, and refines project overviews.",
-  "Comprehensive leads management to capture contact form inquiries, promote submissions to active leads, and track deals.",
+  "AI-powered assistant that auto-generates task breakdowns and structures deliverables",
+  "Leads management to capture contact form inquiries, promote submissions to active leads, and track deals.",
   "Flexible billing engine with six different professional invoice templates that dynamically structure financial statements.",
-  "Visual drag-and-drop Kanban boards and detailed project trackers to coordinate team workflows."
 ],
 stack: ["Next.js", "Supabase", "AI SDK", "Tailwind CSS"],
 link: "https://noplin.com",
       media: [
-        { type: "video", url: "https://assets.mixkit.co/videos/preview/mixkit-web-development-programming-concept-31911-large.mp4" },
-        { type: "image", url: "/bg3.png" }
+ { type: "image", url: "/portfolio/noplincms.png" },
+        { type: "video", url: "/portfolio/noplincmsvid2.mp4" },
+        { type: "image", url: "/portfolio/noplincms3.png" },
+        { type: "video", url: "/portfolio/noplincmsvid3.mp4" },
+         { type: "image", url: "/portfolio/noplincms5.png" },
+        { type: "image", url: "/portfolio/noplincms6.png" },
+        { type: "image", url: "/portfolio/noplincms7.png" },
+        { type: "image", url: "/portfolio/noplincms8.png" },
       ]
     },
     {
-      category: "SaaS Platform",
-      title: "Zenth Workspace",
-      summary: "A modern collaborative hub featuring drag-and-drop Kanban boards, team file repositories, and role permission levels.",
-      bullets: [
-        "Optimized drag-and-drop task workflow updates.",
-        "Real-time team notification indicators and task assignments.",
-        "Integrated rich text document editing and secure file storage."
-      ],
-      stack: ["Next.js", "React", "TypeScript", "Node.js"],
-      link: "#",
+  category: "Certificate Generation & Bulk Issuance Tool",
+  title: "Xertified",
+  summary: "A simple and powerful web application that lets organizations design professional certificates, import lists of names from spreadsheets, and download them instantly in bulk as high-quality PDFs or images.",
+  bullets: [
+    "Includes 10 professional prebuilt certificate templates matching academic, corporate, and award themes.",
+    "Allows bulk importing of recipient names and details from Excel or CSV files with smart header auto-matching.",
+    "Easy-to-use customization studio to adjust colors, border styles, font families, and sizes on the fly.",
+    "Enables simple uploads of logo images and signatory signatures with automatic background removal."
+  ],
+  stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  link: "https://xertified.vercel.app",
+
       media: [
-        { type: "image", url: "/bg2.png" },
-        { type: "image", url: "/bg1.png" }
+        { type: "image", url: "/portfolio/xertify.png" },
+        { type: "image", url: "/portfolio/xertify3.png" },
+         { type: "image", url: "/portfolio/xertify5.png" },
+        { type: "image", url: "/portfolio/xertify6.png" },
       ]
     },
+
     {
       category: "Enterprise App",
       title: "School Pilot ERP",
@@ -185,14 +199,14 @@ link: "https://noplin.com",
   ];
 
   return (
-    <main className="min-h-screen flex flex-col justify-between px-6 py-10 md:px-8 md:py-16 text-white relative">
+    <main className="min-h-screen flex flex-col justify-between px-2 py-8 md:px-3 md:py-12 text-white relative">
       {/* Background ambient light flare */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-(--gold)/10 rounded-full blur-[100px]" />
         <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-(--gold)/5 rounded-full blur-[100px]" />
       </div>
 
-      <div className="max-w-5xl mx-auto w-full relative z-10 mt-6 mb-12">
+      <div className="max-w-6xl mx-auto w-full relative z-10 mt-6 mb-12">
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
           <span className="block w-6 h-px bg-(--gold)" />
@@ -226,19 +240,19 @@ link: "https://noplin.com",
                 {/* Left/Right Column: Text Content */}
                 <div className="w-full md:w-[40%] space-y-4">
                   <div className="space-y-2">
-                    <span className="text-(--gold) text-[0.65rem] font-bold uppercase tracking-widest block border-b border-(--gold)/20 pb-1 w-fit">
+                    <span className="text-(--gold) text-[0.75rem] font-bold uppercase tracking-widest block border-b border-(--gold)/20 pb-1 w-fit">
                       {proj.category}
                     </span>
-                    <h2 className="font-display font-extrabold text-2xl md:text-3xl text-white tracking-tight">
+                    <h2 className="font-display font-extrabold text-2xl md:text-3xl lg:text-4xl text-white tracking-tight">
                       {proj.title}
                     </h2>
                   </div>
                   
-                  <p className="text-white/70 text-sm font-light leading-relaxed">
+                  <p className="text-white/70 text-sm md:text-base font-light leading-relaxed">
                     {proj.summary}
                   </p>
 
-                  <ul className="list-disc pl-5 space-y-1.5 text-xs text-white/50 font-light">
+                  <ul className="list-disc pl-5 space-y-2 text-sm md:text-base text-white/50 font-light leading-relaxed">
                     {proj.bullets.map((bullet, bIdx) => (
                       <li key={bIdx}>{bullet}</li>
                     ))}
@@ -248,7 +262,7 @@ link: "https://noplin.com",
                     {proj.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="text-[0.65rem] tracking-wider text-white/40 font-mono bg-white/5 px-2.5 py-0.5 rounded border border-white/5"
+                        className="text-[0.7rem] tracking-wider text-white/40 font-mono bg-white/5 px-2.5 py-0.5 rounded border border-white/5"
                       >
                         {tech}
                       </span>

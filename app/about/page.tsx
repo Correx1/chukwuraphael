@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Code, FileText, Briefcase, MapPin, Calendar, Quote } from "lucide-react";
+import { Code, FileText, Briefcase, MapPin, Calendar, Quote, Globe, Zap, Settings, GitBranch } from "lucide-react";
+import { FaReact, FaLaravel } from "react-icons/fa6";
+import { SiTailwindcss, SiSanity, SiTypescript } from "react-icons/si";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import Footer from "@/components/shared/Footer";
@@ -36,7 +38,7 @@ export default function AboutPage() {
             {/* Inner Image Container */}
             <div className="relative w-full h-full overflow-hidden border border-white/10 bg-white/5 aspect-square">
               <Image
-                src="/bg1.png"
+                src="/dp2.png"
                 alt="Raphael Portrait"
                 width={600}
                 height={600}
@@ -44,31 +46,47 @@ export default function AboutPage() {
                 priority
               />
             </div>
+            {/* Floating Name Overlay */}
+            <div className="absolute bottom-4 left-4 z-20 bg-black/85 backdrop-blur-md border border-(--gold)/40 px-3 py-1.5 text-(--gold) font-display text-[10px] font-bold tracking-[0.25em] uppercase">
+              C Raphael
+            </div>
           </div>
 
           {/* Column 2: Main Info Summary (7 cols) */}
           <div className="md:col-span-7 space-y-6 text-white/70 leading-relaxed font-light">
-            <p className="text-lg sm:text-xl text-white/95 font-normal leading-snug">
-              I&apos;m <span className="text-(--gold) font-bold">Raphael</span>,
-              A web developer focused on building modern, high-performing digital
-              solutions that help businesses grow and succeed online.
-            </p>
-            <p className="text-sm md:text-base text-white/70 leading-relaxed font-light">
-              <span className="text-4xl md:text-5xl font-bold font-display text-(--gold)
-               float-left mr-2.5 mt-1 leading-none">I</span>
-               combine technical expertise with a
-              problem-solving mindset to create websites and
-              web applications that are fast, scalable, and user-focused.
-              <br/> My goal is to help businesses strengthen their
-              digital presence, improve efficiency,
-              and stay ahead in an increasingly competitive online landscape.
-            </p>
+ 
+
+<p className="text-sm md:text-base text-white/70 leading-relaxed font-light">
+  <span className="text-4xl md:text-5xl font-bold font-display text-(--gold)
+  float-left mr-2.5 mt-1 leading-none">M</span>y work spans a wide range of solutions,
+              including corporate websites, e-commerce platforms,
+              content management systems, customer portals,
+              administration dashboards, booking systems,
+              and custom business applications.  
+
+<br/><br/>
+
+              Beyond development, I help businesses simplify
+              complex workflows by connecting systems,
+              automating repetitive tasks, improving data management,
+              and creating digital processes that save time and increase
+              productivity. 
+
+<br/><br/>
+ my goal is simple: to help businesses, organizations,
+              and growing brands strengthen their digital
+              infrastructure, improve efficiency, enhance
+              user experiences, and build technology that
+              remains reliable as their needs evolve.
+
+</p>
+
             <div className="pt-4">
               <a
-                href="/contact"
+                href="/works"
                 className="btn-gold flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold tracking-wide transition-colors duration-300 w-fit cursor-pointer"
               >
-                <span>Lets Talk</span>
+                <span>My projects</span>
                 <FileText size={15} />
               </a>
             </div>
@@ -88,110 +106,134 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-5 md:gap-x-6 md:gap-y-6">
             {[
-              { name: "Web Application Development", level: 95, widthClass: "w-[95%]" },
-              { name: "E-Commerce Solutions", level: 95, widthClass: "w-[95%]" },
-              { name: "React & Next.js", level: 90, widthClass: "w-[90%]" },
-              { name: "Laravel & PHP Development", level: 75, widthClass: "w-[90%]" },
-              { name: "Technical Virtual Assistant", level: 95, widthClass: "w-[85%]" },
-              { name: "Workflow Automation", level: 80, widthClass: "w-[80%]" },
-            ].map((skill) => (
-              <div
-                key={skill.name}
-                className="bg-white/2 border border-white/5 rounded-lg p-5 md:p-6 hover:border-(--gold)/20 transition-all duration-300 backdrop-blur-sm"
-              >
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-xs font-bold uppercase tracking-widest text-white/90">{skill.name}</span>
-                  <span className="text-xs text-(--gold) font-semibold font-mono">{skill.level}%</span>
+              {
+                name: "Web Application Development",
+                icon: Globe
+              },
+            
+              {
+                name: "React & NextJs",
+                icon: FaReact
+              },
+              {
+                name: "Laravel & PHP Development",
+                icon: FaLaravel
+              },
+              {
+                name: "Tailwind CSS",
+                icon: SiTailwindcss
+              },
+              {
+                name: "TypeScript",
+                icon: SiTypescript
+              },
+              {
+                name: "Headless CMS",
+                icon: SiSanity
+              },
+              
+                {
+                name: "Git & Version Control",
+                icon: GitBranch
+              },
+              {
+                name: "Technical Virtual Assistant",
+                icon: Settings
+              },
+              {
+                name: "Workflow Automation",
+                icon: Zap
+              }
+            ].map((skill) => {
+              const Icon = skill.icon;
+              return (
+                <div
+                  key={skill.name}
+                  className="flex items-center gap-3 transition-colors duration-300 hover:text-(--gold) last:col-span-2 last:justify-self-center sm:last:col-span-1 sm:last:justify-self-start"
+                >
+                  <div className="w-9 h-9 flex items-center justify-center rounded-lg bg-(--gold)/10 border border-(--gold)/20 text-(--gold) shrink-0">
+                    <Icon size={18} />
+                  </div>
+                  <h3 className="font-display text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/90 leading-tight">
+                    {skill.name}
+                  </h3>
                 </div>
-                <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-                  <div className={`h-full bg-(--gold) rounded-full ${skill.widthClass}`} />
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Experience Section */}
+        <div className="mt-16 pt-16 border-t border-white/5">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <span className="block w-12 h-px bg-(--gold)" />
+            <h3 className="font-display font-bold text-2xl text-white uppercase text-center">Experience</h3>
+            <span className="block w-12 h-px bg-(--gold)" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {[
+              {
+                role: "Frontend Developer | Project Manager",
+                company: "Noplin Digital LLC",
+                location: "Lagos",
+                date: "Dec 2024 – present",
+                accomplishments: [
+                  "Developed and deployed several custom Next.js websites, client portals, and CRM dashboards.",
+                  "Built and refined the frontend interfaces of a web-based school management platform.",
+                  "Managed project timelines, tracked deliverable status, and coordinated schedules for leadership.",
+                  "Integrated system automations that connect customer inquiries directly to CRM pipelines."
+                ]
+              },
+              {
+                role: "Technical Lead",
+                company: "Clautechzs Services Ltd",
+                location: "Nigeria",
+                date: "Nov 2023 – present",
+                accomplishments: [
+                  "Designed and built a mobile-responsive e-commerce platform with secure payment integrations.",
+                  "Created a custom Content Management System (CMS) for dynamic product listing and sales.",
+                  "Oversee all remote technical operations, deployment configs, and platform databases.",
+                  "Monitor website health, implement security updates, and quickly resolve system issues."
+                ]
+              }
+            ].map((item, index) => (
+              <div key={index} className="border-b border-white/5 md:border-b-0 pb-6 md:pb-0">
+                <h4 className="font-bold text-white/95 text-lg sm:text-xl mb-1">{item.role}</h4>
+                
+                {/* Company & Date Meta */}
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-white/50 font-light mb-3">
+                  <div className="flex flex-wrap items-center gap-4">
+                    <span className="flex items-center gap-1.5">
+                      <Briefcase size={13} className="text-(--gold)/70" />
+                      {item.company}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <MapPin size={13} className="text-(--gold)/70" />
+                      {item.location}
+                    </span>
+                  </div>
+                  <span className="flex items-center gap-1.5 sm:self-end">
+                    <Calendar size={13} className="text-(--gold)/70" />
+                    {item.date}
+                  </span>
                 </div>
+
+                {/* Bullet Accomplishments */}
+                <ul className="space-y-2 list-disc pl-4 text-sm text-white/70 font-light leading-relaxed">
+                  {item.accomplishments.map((acc, aIdx) => (
+                    <li key={aIdx}>{acc}</li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Experience & Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mt-16 pt-16 border-t border-white/5 items-start">
-          {/* Experience Column */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <h3 className="font-display font-bold text-2xl text-white uppercase">Experience</h3>
-              <span className="block w-12 h-px bg-(--gold)" />
-            </div>
-
-            <div className="space-y-8">
-              {[
-                {
-                  role: "Frontend Developer | Project Manager",
-                  company: "Noplin Digital LLC",
-                  location: "Lagos",
-                  date: "Dec 2024 – present"
-                },
-                {
-                  role: "Technical Lead",
-                  company: "Clautechzs Services Ltd",
-                  location: "Nigeria",
-                  date: "Nov 2023 – present"
-                }
-                
-              ].map((item, index) => (
-                <div key={index} className="border-b border-white/5 pb-6 last:border-b-0 last:pb-0">
-                  <h4 className="font-semibold text-white/95 text-base mb-2">{item.role}</h4>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-white/50 font-light">
-                    <div className="flex flex-wrap items-center gap-4">
-                      <span className="flex items-center gap-1.5">
-                        <Briefcase size={12} className="text-(--gold)/70" />
-                        {item.company}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <MapPin size={12} className="text-(--gold)/70" />
-                        {item.location}
-                      </span>
-                    </div>
-                    <span className="flex items-center gap-1.5 sm:self-end">
-                      <Calendar size={12} className="text-(--gold)/70" />
-                      {item.date}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Key Stats Column */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <h3 className="font-display font-bold text-2xl text-white uppercase">My Stats</h3>
-              <span className="block w-12 h-px bg-(--gold)" />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: "24+",  label: "Projects Completed" },
-                { value: "3+",   label: "Years Experience"   },
-                { value: "10+",  label: "Happy Clients"      },
-                { value: "100%", label: "Ready"       },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="group relative bg-white/2 border border-white/5 rounded-lg p-3 flex flex-col gap-1 overflow-hidden hover:border-(--gold)/30 transition-all duration-300"
-                >
-                  <span className="absolute -top-4 -right-4 w-14 h-14 rounded-full bg-(--gold)/5 blur-2xl group-hover:bg-(--gold)/15 transition-all duration-500" />
-                  <span className="font-display font-extrabold text-2xl text-(--gold) leading-none tracking-tight relative z-10">
-                    {stat.value}
-                  </span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/40 relative z-10">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
+        {/* Performance Metrics Section */}
+       
 
         {/* Testimonials Section */}
         <div className="mt-16 pt-16 border-t border-white/5">

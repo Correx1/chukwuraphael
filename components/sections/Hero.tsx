@@ -22,13 +22,8 @@ export default function Hero() {
   const shapesRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [hasPhotos, setHasPhotos] = useState(false);
-  const [greeting, setGreeting] = useState("Welcome");
 
   useEffect(() => {
-    const hour = new Date().getHours();
-    if (hour >= 0 && hour < 12)       setGreeting("Good Morning");
-    else if (hour >= 12 && hour < 17) setGreeting("Good Afternoon");
-    else                              setGreeting("Good Evening");
     setMounted(true);
   }, []);
 
@@ -36,19 +31,19 @@ export default function Hero() {
     const img = new Image();
     img.onload = () => setHasPhotos(true);
     img.onerror = () => setHasPhotos(false);
-    img.src = "/bg1.png";
+    img.src = "/dp2.png";
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.4 });
-      const chars = headlineRef.current?.querySelectorAll(".char");
-      if (chars?.length) {
+      const heading = headlineRef.current?.querySelector("h1");
+      if (heading) {
         tl.fromTo(
-          chars,
-          { y: 80, opacity: 0, rotateX: -40 },
-          { y: 0, opacity: 1, rotateX: 0, stagger: 0.05, duration: 0.9, ease: "power4.out" }
+          heading,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
         );
       }
       tl.fromTo(subtitleRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, "-=0.3");
@@ -69,12 +64,6 @@ export default function Hero() {
     }, containerRef);
     return () => ctx.revert();
   }, [mounted]);
-
-  const nameChars = "RAPHAEL".split("").map((c, i) => (
-    <span key={i} className="char inline-block origin-bottom">
-      {c}
-    </span>
-  ));
 
   return (
     <div ref={containerRef} className="hero-h w-full relative overflow-hidden">
@@ -137,24 +126,20 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-8 py-16 sm:px-16 sm:py-24 md:px-24">
-        {/* Greeting label */}
-        <div className="flex items-center gap-3 mb-4">
-          <span className="block w-8 h-px bg-(--gold)" />
-          <span className="text-(--gold) font-medium tracking-[0.2em] uppercase" style={{ fontSize: "clamp(0.75rem, 2vw, 1rem)" }}>
-           Hi, {greeting} <span className="emoji-wave inline-block">👋</span>
-          </span>
-          <span className="block w-8 h-px bg-(--gold)" />
+      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-8 py-16 sm:px-16 sm:py-24 md:px-24 translate-y-10 sm:translate-y-16">
+        {/* Category Line */}
+        <div className="flex flex-col items-center gap-2 mb-4">
+          <p className="text-white/60 font-bold tracking-widest uppercase" style={{ fontSize: "clamp(0.9rem, 2vw, 1.3rem)" }}>
+            I Build
+          </p>
+          <span className="block w-6 h-[2px] bg-(--gold)" />
         </div>
 
-        {/* I'M line */}
-        <p className="text-white/60 font-light tracking-widest uppercase mb-2" style={{ fontSize: "clamp(1.2rem, 3.5vw, 2rem)" }}>
-          I&apos;m
-        </p>
-
-        {/* Name */}
-        <div ref={headlineRef} className="mb-4 sm:mb-6 perspective-[600px]">
-          <h1 className="hero-title text-white font-extrabold whitespace-nowrap">{nameChars}</h1>
+        {/* Headline */}
+        <div ref={headlineRef} className="mb-6 sm:mb-8 max-w-3xl mx-auto">
+          <h1 className="text-white font-extrabold tracking-tight leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+            Digital Systems That Help Businesses Operate Better
+          </h1>
         </div>
 
         {/* Typewriter */}
@@ -162,15 +147,17 @@ export default function Hero() {
           {mounted && (
             <TypeAnimation
               sequence={[
-                "I build beautiful and efficient websites",
+                "Custom Web Applications",
                 3000,
-                "I help businesses streamline their operations",
+                "Business websites",
                 3000,
-                "I provide technical support",
+                "CMS and CRM systems",
+                3000,
+                "Operational Tools",
                 3000,
               ]}
               wrapper="p"
-              className="typewriter"
+              className="typewriter font-bold"
               speed={40}
               deletionSpeed={65}
               repeat={Infinity}
@@ -181,26 +168,26 @@ export default function Hero() {
         {/* Buttons */}
         <div ref={buttonsRef} className="flex flex-col items-center gap-4">
           <Link
-            href="/about"
+            href="/work"
             className="btn-gold flex items-center gap-2 px-8 py-3 text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer"
           >
-            <User size={14} />
-           <span>About Me</span>
+            <Briefcase size={14} />
+           <span>Portfolio</span>
           </Link>
           <div className="flex gap-4 justify-center">
-            <Link
-              href="/work"
-              className="btn-outline flex items-center gap-2 px-7 py-3 text-sm font-medium transition-colors duration-300 cursor-pointer"
-            >
-              <Briefcase size={14} />
-              My Work
-            </Link>
             <Link
               href="/services"
               className="btn-outline flex items-center gap-2 px-7 py-3 text-sm font-medium transition-colors duration-300 cursor-pointer"
             >
               <Layers size={14} />
-              My Service
+             Services
+            </Link>
+            <Link
+              href="/about"
+              className="btn-outline flex items-center gap-2 px-7 py-3 text-sm font-medium transition-colors duration-300 cursor-pointer"
+            >
+              <User size={14} />
+             About Me
             </Link>
           </div>
         </div>
