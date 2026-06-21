@@ -6,10 +6,10 @@ import Link from "next/link";
 import { X } from "lucide-react";
 
 const links = [
-  { label: "Home",       href: "/"         },
+  { label: "Home", href: "/" },
+    { label: "Portfolio",    href: "/work"     },
+  { label: "Services", href: "/services" },
   { label: "About Me",   href: "/about"    },
-  { label: "My Work",    href: "/work"     },
-  { label: "My Service", href: "/services" },
   { label: "Contact",    href: "/contact"  },
 ];
 
