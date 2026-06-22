@@ -175,6 +175,26 @@ export default function WorkPage() {
         { type: "image", url: "/portfolio/xertify6.png" },
       ]
     },
+
+    {
+  category: "Business Website",
+  title: "Corrconsult",
+  summary: "A corporate website and headless CMS for a marine consultancy firm.",
+  bullets: [
+     "Easy-to-use Content Management System (CMS) to upload, update, and manage completed projects and job portfolios.",
+    "Search engine optimized (SEO) with metadata configurations to help the business rank higher on Google search.",
+    "Modern styling, professional color accents, and clean typography.",
+    "Fully responsive design that looks stunning and works perfectly on all mobile, tablet, and desktop screens.",
+  ],
+  stack: ["Next.js", "Sanity CMS", "Tailwind CSS", "Framer Motion"],
+      link: "https://corrconsult.vercel.app",
+   media: [
+        { type: "image", url: "/portfolio/corrconsult.png" },
+        { type: "image", url: "/portfolio/corrconsult2.png" },
+        { type: "image", url: "/portfolio/corrconsult3.png" }
+      ]
+    },
+
     {
       category: "Enterprise App",
       title: "School Pilot ERP",

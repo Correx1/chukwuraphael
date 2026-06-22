@@ -66,7 +66,7 @@ export default function Hero() {
           <SwiperSlide>
             <div className="relative w-full h-full">
               <Image
-                src="/dp2.png"
+                src="/dp1.png"
                 alt="Background slide 2"
                 fill
                 className="object-cover object-center slide-bg"
@@ -77,7 +77,7 @@ export default function Hero() {
           <SwiperSlide>
             <div className="relative w-full h-full">
               <Image
-                src="/dp3.png"
+                src="/dp1.png"
                 alt="Background slide 3"
                 fill
                 className="object-cover object-center slide-bg"
@@ -134,27 +134,27 @@ export default function Hero() {
         </div>
 
         {/* Buttons */}
-        <div ref={buttonsRef} className="flex flex-col items-center gap-4">
+        <div ref={buttonsRef} className="flex flex-col items-center gap-3 sm:gap-4">
           <Link
             href="/work"
-            className="btn-gold flex items-center gap-2 px-8 py-3 text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer"
+            className="btn-gold flex items-center gap-2 px-6 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer"
           >
-            <Briefcase size={14} />
+            <Briefcase size={13} className="sm:w-3.5 sm:h-3.5" />
            <span>Portfolio</span>
           </Link>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-3 sm:gap-4 justify-center">
             <Link
               href="/services"
-              className="btn-outline flex items-center gap-2 px-7 py-3 text-sm font-medium transition-colors duration-300 cursor-pointer"
+              className="btn-outline flex items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-medium transition-colors duration-300 cursor-pointer"
             >
-              <Layers size={14} />
+              <Layers size={13} className="sm:w-3.5 sm:h-3.5" />
              Services
             </Link>
             <Link
               href="/about"
-              className="btn-outline flex items-center gap-2 px-7 py-3 text-sm font-medium transition-colors duration-300 cursor-pointer"
+              className="btn-outline flex items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-medium transition-colors duration-300 cursor-pointer"
             >
-              <User size={14} />
+              <User size={13} className="sm:w-3.5 sm:h-3.5" />
              About 
             </Link>
           </div>
